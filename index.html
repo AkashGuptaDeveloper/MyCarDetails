@@ -2,228 +2,159 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5,user-scalable=yes,viewport-fit=cover">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#003f7d">
 <title>Vehicle Owner Details — MP07AH8337</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{width:100%;min-height:100%;background:#fff}
-body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-items:flex-start}
+html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;text-size-adjust:100%}
+html,body{width:100%;min-height:100%;background:#f0f4f8}
+body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-justify-content:center;justify-content:center;-webkit-align-items:flex-start;align-items:flex-start;-webkit-font-smoothing:antialiased}
 .card{width:100%;max-width:100%;background:#fff;min-height:100vh}
-@media(min-width:600px){.card{max-width:480px;box-shadow:0 4px 24px rgba(0,50,120,.12)}}
-
-/* NAVBAR */
-.navbar{background:linear-gradient(135deg,#003f7d,#0066cc);padding:11px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:100}
-.nav-photo{width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.65);object-fit:cover;flex-shrink:0}
-.nav-info{flex:1;min-width:0}
+@media(min-width:600px){.card{max-width:480px;box-shadow:0 4px 32px rgba(0,50,120,.15);min-height:auto;margin:0 auto;border-radius:16px}}
+@media(min-width:1024px){.card{margin:24px auto}}
+.navbar{background:linear-gradient(135deg,#003f7d,#0066cc);padding:11px 12px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:10px;position:-webkit-sticky;position:sticky;top:0;z-index:100;cursor:pointer;-webkit-tap-highlight-color:rgba(255,255,255,.1)}
+.navbar:active{opacity:.92}
+.nav-photo{width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.65);object-fit:cover;-webkit-flex-shrink:0;flex-shrink:0;background:#1a5fa0}
+.nav-info{-webkit-flex:1;flex:1;min-width:0}
 .nav-name{font-size:14px;font-weight:600;color:#fff;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-role{font-size:10px;color:rgba(255,255,255,.7);font-weight:400}
-.nav-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:3px 9px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;flex-shrink:0}
-
-/* REG BANNER */
-.reg-banner{background:linear-gradient(90deg,#002d5c,#0055b3);padding:8px 12px;display:flex;align-items:center;justify-content:space-between}
+.nav-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:3px 9px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;-webkit-flex-shrink:0;flex-shrink:0}
+.reg-banner{background:linear-gradient(90deg,#002d5c,#0055b3);padding:8px 12px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between}
 .reg-label{font-size:9px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
 .reg-number{font-size:17px;font-weight:700;color:#fff;letter-spacing:2px}
 .reg-right{text-align:right}
 .reg-model{font-size:10px;color:rgba(255,255,255,.7)}
 .reg-car{font-size:12px;font-weight:600;color:#7ec8ff}
-
-/* CONTACT STRIP */
 .contact-strip{background:linear-gradient(135deg,#1a6fd4,#0a4fa0);padding:7px 12px;text-align:center}
 .contact-strip p{font-size:12px;font-weight:500;background:linear-gradient(90deg,#7ecfff,#fff,#7ecfff);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
-
-/* BODY */
-.body{padding:8px 8px;display:flex;flex-direction:column;gap:7px}
-
-/* ROW */
-.row{background:#f4f8fc;border-radius:12px;padding:9px 11px;display:flex;align-items:flex-start;gap:9px}
-.icon-box{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.body{padding:8px;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:7px}
+.row{background:#f4f8fc;border-radius:12px;padding:9px 11px;display:-webkit-flex;display:flex;-webkit-align-items:flex-start;align-items:flex-start;gap:9px}
+.icon-box{width:38px;height:38px;border-radius:9px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;-webkit-flex-shrink:0;flex-shrink:0}
 .icon-box svg{width:20px;height:20px}
 .ib-blue{background:#e0edf8;border:1.5px solid #004B88}
 .ib-green{background:#e6f9ef;border:1.5px solid #25D366}
 .ib-red{background:#fde8e8;border:1.5px solid #DB4437}
-.ib-gmaps{background:#e8f0fe;border:1.5px solid #4285F4}
 .lbl{font-size:9px;color:#004B88;font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:2px}
 .lbl-green{color:#1a9e50}
-.lbl-gmaps{color:#4285F4}
 .lbl-call{color:#c0392b}
 .val{font-size:14px;color:#1a2a3a;font-weight:600;line-height:1.3}
 .sub{font-size:11px;color:#6b7a8d;margin-top:1px}
-
-/* BUTTONS */
-.btns{display:flex;flex-direction:column;gap:6px;width:100%}
-.btn{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600;-webkit-appearance:none;border:none;cursor:pointer;width:100%}
-.btn svg{width:18px;height:18px;flex-shrink:0}
+.btns{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:6px;width:100%}
+.btn{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;gap:8px;padding:11px 12px;border-radius:10px;text-decoration:none;font-size:13px;font-weight:600;-webkit-appearance:none;appearance:none;border:none;cursor:pointer;width:100%;font-family:inherit;touch-action:manipulation}
+.btn:active{opacity:.85}
+.btn svg{width:18px;height:18px;-webkit-flex-shrink:0;flex-shrink:0}
 .btn-blue{background:#004B88;color:#fff}
 .btn-wa{background:#25D366;color:#fff}
-.btn-gmaps{background:#4285F4;color:#fff}
 .btn-dl{background:#004B88;color:#fff}
 .btn-open{background:#e8f0fe;color:#1a56db}
-
-/* DOCS */
 .doc-section{background:#f4f8fc;border-radius:12px;overflow:hidden}
-.doc-header{display:flex;align-items:center;gap:9px;padding:9px 11px;cursor:pointer;user-select:none;-webkit-user-select:none}
+.doc-header{display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:9px;padding:9px 11px;cursor:pointer;-webkit-user-select:none;user-select:none;touch-action:manipulation}
 .doc-header:active{background:#eaf1f9}
-.doc-title{flex:1;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#004B88}
-.chevron{transition:transform .25s;flex-shrink:0}
-.chevron.open{transform:rotate(180deg)}
+.doc-title{-webkit-flex:1;flex:1;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#004B88}
+.chevron{transition:-webkit-transform .25s;transition:transform .25s;-webkit-flex-shrink:0;flex-shrink:0}
+.chevron.open{-webkit-transform:rotate(180deg);transform:rotate(180deg)}
 .doc-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
-.doc-body.open{max-height:3000px}
-.doc-inner{display:flex;flex-direction:column;gap:7px;padding:0 8px 8px}
+.doc-body.open{max-height:6000px}
+.doc-inner{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:7px;padding:0 8px 8px}
 .doc-card{border-radius:10px;overflow:hidden;border:1px solid #dce8f5}
 .doc-lbl{padding:7px 10px;font-size:10px;font-weight:700;color:#004B88;background:#e8f2fc;text-transform:uppercase;letter-spacing:.4px}
-
-/* RC VIEWER */
-.rc-viewer{position:relative;background:#edf3fa;overflow:hidden;touch-action:none;cursor:zoom-in;-webkit-user-select:none;user-select:none;width:100%;display:flex;align-items:center;justify-content:center}
-.rc-viewer img{width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none}
-.rc-hint{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,75,136,.8);color:#fff;font-size:10px;padding:3px 10px;border-radius:20px;pointer-events:none;white-space:nowrap;transition:opacity .5s;z-index:5}
-
-/* FOOTER */
+.iv{position:relative;background:#edf3fa;overflow:hidden;touch-action:none;cursor:zoom-in;-webkit-user-select:none;user-select:none;width:100%;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;min-height:100px}
+.iv img{width:100%;height:auto;display:block;-webkit-transform-origin:center center;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none;max-width:100%;opacity:0;transition:opacity .3s}
+.iv img.loaded{opacity:1}
+.iv .hint{position:absolute;bottom:8px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(0,75,136,.8);color:#fff;font-size:10px;padding:3px 10px;border-radius:20px;pointer-events:none;white-space:nowrap;transition:opacity .5s;z-index:5}
+.iv .zlbl{position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;z-index:5}
+.iv .err{width:100%;padding:14px;text-align:center;font-size:11px;color:#c0392b;background:#fff3f3}
 .footer{padding:10px;text-align:center}
 .footer-text{font-size:13px;font-weight:700;letter-spacing:.4px;background:linear-gradient(90deg,#003f7d,#0077e6,#00b4d8,#0077e6,#003f7d);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite}
-
+@-webkit-keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
 @keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
-
-/* RESPONSIVE */
-@media(min-width:600px){
-  .card{border-radius:16px;margin:16px auto;min-height:auto;}
-}
-@media(max-width:320px){
-  .nav-name{font-size:12px}
-  .nav-badge{font-size:10px;padding:2px 7px}
-  .val{font-size:13px}
-  .btn{font-size:12px;padding:9px 10px}
-}
-
-@media(orientation:landscape) and (max-height:500px){
-  .navbar{padding:8px 12px}
-  .nav-photo{width:36px;height:36px}
-  .nav-name{font-size:13px}
-  .reg-banner{padding:6px 12px}
-  .reg-number{font-size:15px}
-  .contact-strip{padding:5px 12px}
-  .body{padding:6px 8px;gap:6px}
-  .row{padding:8px 10px;gap:8px}
-  .icon-box{width:34px;height:34px}
-  .btns{flex-direction:row}
-  .btn{padding:8px 10px;font-size:12px}
-  .footer{padding:8px}
-  .footer-text{font-size:12px}
-}
+@media(min-width:600px){.nav-name{font-size:15px}.val{font-size:15px}}
+@media(min-width:768px){.body{padding:10px}.row{padding:10px 13px}.btn{font-size:14px;padding:12px 14px}}
+@media(max-width:320px){.nav-name{font-size:12px}.nav-badge{font-size:10px;padding:2px 7px}.val{font-size:13px}.btn{font-size:12px;padding:9px 10px}}
+@media(orientation:landscape) and (max-height:500px){.navbar{padding:8px 12px}.nav-photo{width:36px;height:36px}.nav-name{font-size:13px}.reg-banner{padding:6px 12px}.reg-number{font-size:15px}.contact-strip{padding:5px 12px}.body{padding:6px 8px;gap:6px}.row{padding:8px 10px;gap:8px}.icon-box{width:34px;height:34px}.btns{-webkit-flex-direction:row;flex-direction:row}.btn{padding:9px 10px;font-size:12px}.footer{padding:8px}.footer-text{font-size:12px}}
+@media(prefers-color-scheme:dark){html,body{background:#0f1923}.card{background:#1a2533}.row{background:#1e2d3d}.val{color:#e8f0fa}.sub{color:#8fa3b8}.doc-section{background:#1e2d3d}.doc-card{border-color:#2a3d52}.doc-lbl{background:#1a3450;color:#7ec8ff}.doc-title{color:#7ec8ff}.lbl{color:#7ec8ff}.iv{background:#1a2a3a}.btn-open{background:#1a3050;color:#7ec8ff}}
 </style>
 </head>
 <body>
 
 <script>
 (function(){
-  // --- OBFUSCATED IDs ---
-  var PHOTO_ID=[124, 98, 113, 15, 21, 123, 81, 121, 114, 83, 10, 14, 126, 15, 62, 15, 53, 1, 121, 90, 38, 58, 127, 73, 10, 69, 0, 59, 40, 48, 2, 44, 6];
-  var RC_ID=[124, 37, 114, 7, 24, 12, 85, 3, 70, 66, 107, 35, 19, 16, 3, 50, 11, 98, 3, 115, 36, 3, 83, 118, 6, 121, 33, 49, 13, 61, 7, 101, 116];
-  var INS_ID=[124, 99, 90, 95, 38, 16, 86, 102, 98, 96, 55, 5, 20, 49, 23, 11, 7, 61, 118, 123, 6, 29, 21, 11, 10, 95, 100, 34, 56, 104, 12, 124, 31];
-  var DL_ID=[124, 53, 121, 118, 22, 31, 119, 0, 84, 80, 57, 116, 62, 46, 126, 31, 24, 2, 91, 127, 116, 56, 106, 97, 101, 0, 127, 17, 122, 16, 3, 46, 61];
-  var AADHAR_ID=[124, 6, 73, 124, 7, 58, 110, 4, 127, 123, 103, 118, 51, 38, 18, 34, 30, 37, 115, 14, 53, 27, 127, 96, 96, 125, 35, 112, 125, 31, 18, 45, 5];
-  function _d(arr){var k='MP07AH8337RAKESH';return arr.map(function(c,i){return String.fromCharCode(c^k.charCodeAt(i%k.length));}).join('');}
-  var __photo_id = _d(PHOTO_ID);
-  var __rc_id = _d(RC_ID);
-  var __ins_id = _d(INS_ID);
-  var __dl_id = _d(DL_ID);
-  var __aadhar_id = _d(AADHAR_ID);
+  'use strict';
+  var _a=[124,98,113,15,21,123,81,121,114,83,10,14,126,15,62,15,53,1,121,90,38,58,127,73,10,69,0,59,40,48,2,44,6];
+  var _b=[124,37,114,7,24,12,85,3,70,66,107,35,19,16,3,50,11,98,3,115,36,3,83,118,6,121,33,49,13,61,7,101,116];
+  var _c=[124,99,90,95,38,16,86,102,98,96,55,5,20,49,23,11,7,61,118,123,6,29,21,11,10,95,100,34,56,104,12,124,31];
+  var _e=[124,53,121,118,22,31,119,0,84,80,57,116,62,46,126,31,24,2,91,127,116,56,106,97,101,0,127,17,122,16,3,46,61];
+  var _f=[124,6,73,124,7,58,110,4,127,123,103,118,51,38,18,34,30,37,115,14,53,27,127,96,96,125,35,112,125,31,18,45,5];
+  function _x(r){var k='MP07AH8337RAKESH';return r.map(function(c,i){return String.fromCharCode(c^k.charCodeAt(i%k.length));}).join('');}
+  var _pid=_x(_a),_rid=_x(_b),_iid=_x(_c),_did=_x(_e),_aid=_x(_f);
 
-  // --- SET URLs AT RUNTIME ---
-  function gdImg(id){ return 'https://drive.google.com/uc?export=view&id='+id; }
-
-  function setImgWithFallback(el, id){
+  function loadImg(el,id){
     if(!el) return;
-    el.style.minHeight='80px';
-    el.style.background='#edf3fa';
-    var url = gdImg(id);
-    el.src = url;
-    el.onerror = function(){
-      // fallback: try thumbnail format
-      el.onerror = null;
-      el.src = 'https://drive.google.com/thumbnail?id='+id+'&sz=w800';
-    };
+    var urls=[
+      'https://drive.google.com/uc?export=view&id='+id,
+      'https://drive.google.com/thumbnail?id='+id+'&sz=w800',
+      'https://lh3.googleusercontent.com/d/'+id+'=w800'
+    ];
+    var i=0;
+    function tryNext(){
+      if(i>=urls.length){
+        var d=document.createElement('div');
+        d.className='err';d.textContent='⚠️ Image unavailable. Check Drive sharing.';
+        el.parentNode&&el.parentNode.insertBefore(d,el);
+        el.style.display='none';return;
+      }
+      el.src=urls[i++];
+    }
+    el.onerror=tryNext;
+    el.onload=function(){el.classList.add('loaded');};
+    tryNext();
   }
 
   function setUrls(){
-    setImgWithFallback(document.getElementById('nav-photo-img'), __photo_id);
-    setImgWithFallback(document.getElementById('rc-img'), __rc_id);
-    setImgWithFallback(document.getElementById('dl-img'), __dl_id);
-    setImgWithFallback(document.getElementById('ad-img'), __aadhar_id);
-
-    var insBtn=document.getElementById('ins-dl-btn');
-    if(insBtn){
-      insBtn.href='https://drive.google.com/uc?export=download&id='+__ins_id;
-      insBtn.setAttribute('download','Car_Insurance_MP07AH8337.pdf');
-    }
-    var insOpen=document.getElementById('ins-open-btn');
-    if(insOpen) insOpen.href='https://drive.google.com/file/d/'+__ins_id+'/preview';
+    loadImg(document.getElementById('ph'),_pid);
+    loadImg(document.getElementById('irc'),_rid);
+    loadImg(document.getElementById('idl'),_did);
+    loadImg(document.getElementById('iad'),_aid);
+    var a=document.getElementById('ins-dl');
+    if(a){a.href='https://drive.google.com/uc?export=download&id='+_iid;}
+    var b=document.getElementById('ins-op');
+    if(b){b.href='https://drive.google.com/file/d/'+_iid+'/preview';}
   }
 
-  // --- RIGHT CLICK DISABLE ---
-  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
-
-  // --- KEYBOARD SHORTCUTS DISABLE ---
-  // F12, Ctrl+Shift+I, Ctrl+U (view source), Ctrl+S (save), Ctrl+Shift+J, Ctrl+Shift+C
-  document.addEventListener('keydown', function(e){
-    if(e.keyCode===123) { e.preventDefault(); return false; } // F12
-    if(e.ctrlKey && e.shiftKey && (e.keyCode===73||e.keyCode===74||e.keyCode===67)) { e.preventDefault(); return false; } // Ctrl+Shift+I/J/C
-    if(e.ctrlKey && e.keyCode===85) { e.preventDefault(); return false; } // Ctrl+U
-    if(e.ctrlKey && e.keyCode===83) { e.preventDefault(); return false; } // Ctrl+S
-    if(e.ctrlKey && e.keyCode===80) { e.preventDefault(); return false; } // Ctrl+P
-    if(e.metaKey && e.keyCode===83) { e.preventDefault(); return false; } // Cmd+S
-    if(e.metaKey && e.keyCode===80) { e.preventDefault(); return false; } // Cmd+P
+  document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
+  document.addEventListener('keydown',function(e){
+    var c=e.keyCode||e.which;
+    if(c===123){e.preventDefault();return false;}
+    if(e.ctrlKey&&e.shiftKey&&(c===73||c===74||c===67)){e.preventDefault();return false;}
+    if(e.ctrlKey&&(c===85||c===83||c===80)){e.preventDefault();return false;}
+    if(e.metaKey&&(c===83||c===80)){e.preventDefault();return false;}
+    if(e.metaKey&&e.altKey&&c===73){e.preventDefault();return false;}
   });
-
-  // --- DEVTOOLS DETECTION --- (basic deterrent)
-  var _dt = false;
-  var _threshold = 160;
+  var _dt=false;
   setInterval(function(){
-    if(window.outerWidth - window.innerWidth > _threshold || window.outerHeight - window.innerHeight > _threshold){
-      if(!_dt){
-        _dt = true;
-        document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;background:#fff;color:#c0392b;font-size:18px;font-weight:700;text-align:center;padding:20px;">⛔ Access Restricted<br><span style="font-size:13px;color:#666;font-weight:400;margin-top:8px;display:block">Developer tools detected.</span></div>';
-      }
-    } else {
-      _dt = false;
-    }
-  }, 1000);
+    var w=window.outerWidth-window.innerWidth>160;
+    var h=window.outerHeight-window.innerHeight>160;
+    if((w||h)&&!_dt){_dt=true;document.body.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;background:#fff;flex-direction:column;gap:12px;padding:20px;text-align:center"><span style="font-size:40px">⛔</span><span style="font-size:18px;font-weight:700;color:#c0392b">Access Restricted</span><span style="font-size:13px;color:#666">Developer tools detected.</span></div>';}
+    if(!w&&!h)_dt=false;
+  },800);
+  document.addEventListener('dragstart',function(e){if(e.target.tagName==='IMG')e.preventDefault();});
+  document.addEventListener('touchstart',function(e){if(e.target.tagName==='IMG')e.preventDefault();},{passive:false});
+  var s=document.createElement('style');
+  s.textContent='*{-webkit-user-select:none!important;-moz-user-select:none!important;user-select:none!important}@media print{body{display:none!important}}';
+  document.head.appendChild(s);
 
-  // --- IMG DRAG DISABLE ---
-  document.addEventListener('dragstart', function(e){
-    if(e.target.tagName==='IMG') e.preventDefault();
-  });
-
-  // --- LONG PRESS DISABLE (mobile save image) ---
-  document.addEventListener('touchstart', function(e){
-    if(e.target.tagName==='IMG') e.preventDefault();
-  }, {passive:false});
-
-  // --- CSS: disable text select + print ---
-  var style=document.createElement('style');
-  style.textContent=[
-    '* { -webkit-user-select:none!important; user-select:none!important; }',
-    '@media print { body { display:none!important; } }',
-  ].join('');
-  document.head.appendChild(style);
-
-  // --- INIT ---
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded', setUrls);
-  } else {
-    setUrls();
-  }
-
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',setUrls);}else{setUrls();}
 })();
 </script>
 
 <div class="card">
-
-  <!-- NAVBAR -->
-  <div class="navbar" onclick="window.open('https://akashguptadeveloper.github.io/MyCarDetails/index.html','_blank')" style="cursor:pointer">
-    <img class="nav-photo" id="nav-photo-img" src="" alt="Owner">
+  <div class="navbar" onclick="window.open('https://akashguptadeveloper.github.io/MyCarDetails/index.html','_blank')" role="button">
+    <img class="nav-photo" id="ph" src="" alt="Owner" width="42" height="42">
     <div class="nav-info">
       <div class="nav-name">Mr. Rakesh Gupta</div>
       <div class="nav-role">Vehicle Owner Details</div>
@@ -231,7 +162,6 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
     <div class="nav-badge">MP07AH8337</div>
   </div>
 
-  <!-- REG BANNER -->
   <div class="reg-banner">
     <div>
       <div class="reg-label">Registration No.</div>
@@ -243,14 +173,12 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
     </div>
   </div>
 
-  <!-- CONTACT STRIP -->
   <div class="contact-strip">
     <p>📞 For vehicle contact, please reach out to the owner</p>
   </div>
 
   <div class="body">
 
-    <!-- OWNER -->
     <div class="row">
       <div class="icon-box ib-blue">
         <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#004B88" stroke-width="1.8"/><path d="M4 20c0-3 3.6-5 8-5s8 2 8 5" stroke="#004B88" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -262,7 +190,6 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
       </div>
     </div>
 
-    <!-- CALL -->
     <div class="row" style="flex-direction:column;gap:7px">
       <div style="display:flex;align-items:center;gap:10px">
         <div class="icon-box ib-red">
@@ -270,7 +197,7 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
         </div>
         <div class="lbl lbl-call">Direct Call</div>
       </div>
-      <div class="btns" style="padding-left:0">
+      <div class="btns">
         <a href="tel:+917987574875" class="btn btn-blue">
           <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4l1.9-1.9c.2-.2.6-.3.9-.1 1 .4 2.1.6 3.2.6.5 0 .8.3.8.8v2.4c0 .5-.3.8-.8.8C9.9 19 5 14.1 5 5.8c0-.5.3-.8.8-.8h2.4c.5 0 .8.3.8.8 0 1.1.2 2.2.6 3.2.2.3.1.7-.1.9L7.6 11.8l-1-1z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           +91 79875 74875
@@ -282,7 +209,6 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
       </div>
     </div>
 
-    <!-- WHATSAPP -->
     <div class="row" style="flex-direction:column;gap:7px">
       <div style="display:flex;align-items:center;gap:10px">
         <div class="icon-box ib-green">
@@ -290,46 +216,16 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
         </div>
         <div class="lbl lbl-green">WhatsApp</div>
       </div>
-      <div style="padding-left:0">
-        <a href="https://wa.me/917987574875" target="_blank" rel="noopener" class="btn btn-wa">
+      <div>
+        <a href="https://wa.me/917987574875" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
           <svg viewBox="0 0 24 24" fill="white"><path d="M12.031 2C6.49 2 2 6.49 2 12.031c0 1.868.511 3.614 1.395 5.117L2 22l5.02-1.369A10.01 10.01 0 0 0 12.031 22C17.573 22 22 17.51 22 11.969 22 6.428 17.573 2 12.031 2zm5.27 14.19c-.225.633-1.317 1.21-1.81 1.267-.492.056-1.004.079-3.23-.673-2.718-.927-4.459-3.693-4.594-3.865-.133-.172-1.085-1.443-1.085-2.753 0-1.31.685-1.954.93-2.22.245-.264.535-.33.713-.33h.514c.165 0 .39-.063.608.463.225.541.763 1.864.83 2 .067.133.112.29.022.463-.09.172-.135.279-.267.43-.134.152-.28.339-.4.456-.133.133-.272.278-.117.545.155.267.69 1.138 1.482 1.843.99.882 1.826 1.154 2.083 1.283.257.127.408.106.558-.064.155-.172.664-.775.843-1.042.178-.267.356-.222.597-.133.24.089 1.525.72 1.787.85.26.133.432.2.496.31.066.112.066.644-.158 1.27z"/></svg>
           Message on WhatsApp
         </a>
       </div>
     </div>
 
-    <!-- ADDRESS (HIDDEN)
-    <div class="row">
-      <div class="icon-box ib-blue">
-        <svg viewBox="0 0 24 24" fill="#004B88"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-      </div>
-      <div>
-        <div class="lbl">Address</div>
-        <div class="val" style="font-size:12px;font-weight:500;line-height:1.6">Near Dr. Goyal, Subhash Ganj,<br>Opp Post Office, Dabra,<br>Madhya Pradesh — 475110</div>
-      </div>
-    </div>
-    ADDRESS HIDDEN -->
-
-    <!-- GOOGLE MAPS (HIDDEN)
-    <div class="row" style="flex-direction:column;gap:7px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="icon-box ib-gmaps">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="#DB4437"/></svg>
-        </div>
-        <div class="lbl lbl-gmaps">Google Maps</div>
-      </div>
-      <div style="padding-left:0">
-        <a href="https://maps.google.com/?q=Near+Dr+Goyal+Subhash+Ganj+Dabra+Madhya+Pradesh+475110" target="_blank" rel="noopener" class="btn btn-gmaps">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z" fill="white"/></svg>
-          Navigate on Google Maps
-        </a>
-      </div>
-    </div>
-    GOOGLE MAPS HIDDEN -->
-
-    <!-- DOCUMENTS -->
     <div class="doc-section">
-      <div class="doc-header" id="doc-hdr" onclick="toggleDocs()">
+      <div class="doc-header" onclick="toggleDocs()" role="button">
         <div class="icon-box ib-blue">
           <svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="#004B88" stroke-width="1.8" stroke-linejoin="round"/><polyline points="14,2 14,8 20,8" stroke="#004B88" stroke-width="1.8" stroke-linejoin="round"/></svg>
         </div>
@@ -339,293 +235,127 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
       <div class="doc-body" id="doc-body">
         <div class="doc-inner">
 
-          <!-- RC -->
           <div class="doc-card">
             <div class="doc-lbl">🚗 Car RC — Registration Certificate</div>
-            <div class="rc-viewer" id="rcv">
-              <img id="rc-img" src="" alt="Car RC" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
-              <div class="rc-hint" id="rc-hint">🔍 Pinch to zoom in • Drag to pan</div>
-              <div id="rc-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
+            <div class="iv" id="rcv">
+              <img id="irc" src="" alt="Car RC" style="width:100%;height:auto;display:block;-webkit-transform-origin:center;transform-origin:center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
+              <div class="hint" id="rch">🔍 Pinch to zoom • Double tap to zoom</div>
+              <div class="zlbl" id="rcz">1×</div>
             </div>
           </div>
 
-          <!-- INSURANCE -->
           <div class="doc-card">
             <div class="doc-lbl">🛡️ Car Insurance — ICICI Lombard</div>
             <div style="padding:10px;display:flex;flex-direction:column;gap:7px">
-              <a id="ins-dl-btn" href="#" download="Car_Insurance_MP07AH8337.pdf" class="btn btn-dl">
+              <a id="ins-dl" href="#" download="Car_Insurance_MP07AH8337.pdf" class="btn btn-dl">
                 <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 16l-4-4h2.5V4h3v8H16l-4 4z" fill="white"/><rect x="4" y="18" width="16" height="2" rx="1" fill="white"/></svg>
                 Download Insurance PDF
               </a>
-              <a id="ins-open-btn" href="#" target="_blank" rel="noopener" class="btn btn-open">
+              <a id="ins-op" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-open">
                 <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z" stroke="#1a56db" stroke-width="1.8"/><polyline points="14,3 14,9 20,9" stroke="#1a56db" stroke-width="1.8"/><line x1="8" y1="13" x2="16" y2="13" stroke="#1a56db" stroke-width="1.5"/><line x1="8" y1="17" x2="13" y2="17" stroke="#1a56db" stroke-width="1.5"/></svg>
                 Open Insurance PDF
               </a>
             </div>
           </div>
 
-
-          <!-- DRIVING LICENCE -->
           <div class="doc-card">
             <div class="doc-lbl">🪪 Driving Licence</div>
-            <div class="rc-viewer" id="dlv">
-              <img id="dl-img" src="" alt="Driving Licence" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
-              <div class="rc-hint" id="dl-hint">🔍 Pinch to zoom in • Drag to pan</div>
-              <div id="dl-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
+            <div class="iv" id="dlv">
+              <img id="idl" src="" alt="Driving Licence" style="width:100%;height:auto;display:block;-webkit-transform-origin:center;transform-origin:center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
+              <div class="hint" id="dlh">🔍 Pinch to zoom • Double tap to zoom</div>
+              <div class="zlbl" id="dlz">1×</div>
             </div>
           </div>
 
-          <!-- AADHAAR CARD -->
           <div class="doc-card">
             <div class="doc-lbl">🪪 Aadhaar Card</div>
-            <div class="rc-viewer" id="adv">
-              <img id="ad-img" src="" alt="Aadhaar Card" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
-              <div class="rc-hint" id="ad-hint">🔍 Pinch to zoom in • Drag to pan</div>
-              <div id="ad-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
+            <div class="iv" id="adv">
+              <img id="iad" src="" alt="Aadhaar Card" style="width:100%;height:auto;display:block;-webkit-transform-origin:center;transform-origin:center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
+              <div class="hint" id="adh">🔍 Pinch to zoom • Double tap to zoom</div>
+              <div class="zlbl" id="adz">1×</div>
             </div>
           </div>
+
         </div>
       </div>
     </div>
 
   </div>
-
   <div class="footer"><span class="footer-text">Vehicle Owner Identification Details</span></div>
 </div>
 
 <script>
-
-// Photo loader functions
-function loadNavPhoto(input){
-  if(!input.files||!input.files[0]) return;
-  var reader=new FileReader();
-  reader.onload=function(e){ document.getElementById('nav-photo-img').src=e.target.result; };
-  reader.readAsDataURL(input.files[0]);
-}
-function loadRcImg(input){
-  if(!input.files||!input.files[0]) return;
-  var reader=new FileReader();
-  reader.onload=function(e){ document.getElementById('rc-img').src=e.target.result; };
-  reader.readAsDataURL(input.files[0]);
-}
-function openPdfPicker(id){ document.getElementById(id).click(); }
-function loadPdf(input, linkId){
-  if(!input.files||!input.files[0]) return;
-  var file=input.files[0];
-  var url=URL.createObjectURL(file);
-  var link=document.getElementById(linkId);
-  if(!link) return;
-  link.href=url;
-  if(linkId.includes('download')){
-    link.download=file.name;
-    link.removeAttribute('onclick');
-    link.click();
-  } else {
-    link.target='_blank';
-    link.removeAttribute('onclick');
-    link.click();
-  }
-}
-
-// DOCS TOGGLE
 function toggleDocs(){
   var b=document.getElementById('doc-body');
   var c=document.getElementById('chev');
-  var open=b.classList.toggle('open');
-  c.classList.toggle('open',open);
+  b.classList.toggle('open');
+  c.classList.toggle('open');
 }
 
-// RC ZOOM & PAN
-(function(){
-  var scale=1,panX=0,panY=0;
-  var MIN=1,MAX=5;
-  var dragging=false,pinching=false;
-  var startX=0,startY=0,startDist=0,startScale=1;
+function ZP(imgId,boxId,hintId,lblId){
+  var sc=1,px=0,py=0,MIN=1,MAX=5;
+  var drag=false,pinch=false,sx=0,sy=0,sd=0,ss=1,lastTap=0;
+  var im=document.getElementById(imgId);
+  var bx=document.getElementById(boxId);
+  var ht=document.getElementById(hintId);
+  var lb=document.getElementById(lblId);
+  if(!im||!bx)return;
 
-  function img(){return document.getElementById('rc-img')}
-  function box(){return document.getElementById('rcv')}
-
-  function clamp(v,lo,hi){return Math.min(hi,Math.max(lo,v))}
-
+  function clamp(v,a,b){return Math.min(b,Math.max(a,v));}
   function apply(s,x,y,anim){
-    var im=img(),bx=box();
-    if(!im||!bx) return;
     s=clamp(s,MIN,MAX);
     if(s<=1){x=0;y=0;}
     else{
-      var bw=bx.offsetWidth;
-      var bh=im.offsetHeight;
-      var maxX=(bw*s-bw)/2;
-      var maxY=(bh*s-bh)/2;
-      x=clamp(x,-maxX,maxX);
-      y=clamp(y,-maxY,maxY);
+      var mX=(bx.offsetWidth*(s-1))/2;
+      var mY=(im.offsetHeight*(s-1))/2;
+      x=clamp(x,-mX,mX);y=clamp(y,-mY,mY);
     }
-    scale=s;panX=x;panY=y;
-    im.style.transition=anim?'transform .2s ease':'none';
-    im.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';
-    var lbl=document.getElementById('rc-zoom-label');
-    if(lbl){lbl.style.display=s>1.05?'block':'none';lbl.textContent=s.toFixed(1)+'×';}
+    sc=s;px=x;py=y;
+    var tr=anim?'transform .2s ease':'none';
+    im.style.webkitTransition=im.style.transition=tr;
+    var t='translate('+x+'px,'+y+'px) scale('+s+')';
+    im.style.webkitTransform=im.style.transform=t;
+    if(lb){lb.style.display=s>1.05?'block':'none';lb.textContent=s.toFixed(1)+'×';}
   }
-
-  function dist(t){
-    var dx=t[0].clientX-t[1].clientX;
-    var dy=t[0].clientY-t[1].clientY;
-    return Math.sqrt(dx*dx+dy*dy);
-  }
-
-  function hideHint(){
-    var h=document.getElementById('rc-hint');
-    if(h){h.style.opacity='0';setTimeout(function(){h.style.display='none'},500)}
-  }
-
-  function init(){
-    var bx=box();
-    if(!bx) return;
-
-    setTimeout(hideHint,3000);
-
-    // Touch
-    bx.addEventListener('touchstart',function(e){
-      hideHint();
-      if(e.touches.length===2){
-        pinching=true;dragging=false;
-        startDist=dist(e.touches);
-        startScale=scale;
-        e.preventDefault();
-      } else if(e.touches.length===1){
-        dragging=true;pinching=false;
-        startX=e.touches[0].clientX-panX;
-        startY=e.touches[0].clientY-panY;
-        e.preventDefault();
-      }
-    },{passive:false});
-
-    bx.addEventListener('touchmove',function(e){
-      if(pinching&&e.touches.length===2){
-        var d=dist(e.touches);
-        apply(startScale*(d/startDist),panX,panY,false);
-        e.preventDefault();
-      } else if(dragging&&e.touches.length===1){
-        apply(scale,e.touches[0].clientX-startX,e.touches[0].clientY-startY,false);
-        e.preventDefault();
-      }
-    },{passive:false});
-
-    bx.addEventListener('touchend',function(e){
-      if(e.touches.length<2) pinching=false;
-      if(e.touches.length===0) dragging=false;
-    });
-
-    // Mouse (desktop)
-    bx.addEventListener('mousedown',function(e){
-      if(scale<=1) return;
-      dragging=true;
-      startX=e.clientX-panX;startY=e.clientY-panY;
-      bx.style.cursor='grabbing';bx.style.touchAction='none';
-      e.preventDefault();
-    });
-    document.addEventListener('mousemove',function(e){
-      if(!dragging) return;
-      apply(scale,e.clientX-startX,e.clientY-startY,false);
-    });
-    document.addEventListener('mouseup',function(){
-      dragging=false;
-      var b=box();if(b){b.style.cursor='zoom-in';}
-    });
-
-    // Wheel
-    bx.addEventListener('wheel',function(e){
-      e.preventDefault();
-      apply(scale+(e.deltaY<0?0.25:-0.25),panX,panY,true);
-    },{passive:false});
-  }
-
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',init);
-  } else {
-    init();
-  }
-})();
-
-// GENERIC ZOOM & PAN (used for DL and Aadhaar)
-function makeZoomPan(imgId, boxId, hintId, labelId){
-  var scale=1,panX=0,panY=0;
-  var MIN=1,MAX=5;
-  var dragging=false,pinching=false;
-  var startX=0,startY=0,startDist=0,startScale=1;
-
-  function im(){return document.getElementById(imgId)}
-  function bx(){return document.getElementById(boxId)}
-  function clamp(v,lo,hi){return Math.min(hi,Math.max(lo,v))}
-
-  function apply(s,x,y,anim){
-    var i=im(),b=bx();
-    if(!i||!b) return;
-    s=clamp(s,MIN,MAX);
-    if(s<=1){x=0;y=0;}
-    else{
-      var bw=b.offsetWidth,bh=i.offsetHeight;
-      x=clamp(x,-(bw*s-bw)/2,(bw*s-bw)/2);
-      y=clamp(y,-(bh*s-bh)/2,(bh*s-bh)/2);
-    }
-    scale=s;panX=x;panY=y;
-    i.style.transition=anim?'transform .2s ease':'none';
-    i.style.transform='translate('+x+'px,'+y+'px) scale('+s+')';
-    var lbl=document.getElementById(labelId);
-    if(lbl){lbl.style.display=s>1.05?'block':'none';lbl.textContent=s.toFixed(1)+'×';}
-  }
-
-  function dist(t){
-    var dx=t[0].clientX-t[1].clientX,dy=t[0].clientY-t[1].clientY;
-    return Math.sqrt(dx*dx+dy*dy);
-  }
-
-  function hideHint(){
-    var h=document.getElementById(hintId);
-    if(h){h.style.opacity='0';setTimeout(function(){h.style.display='none'},500)}
-  }
-
-  var b=bx();
-  if(!b) return;
+  function dist(t){var dx=t[0].clientX-t[1].clientX,dy=t[0].clientY-t[1].clientY;return Math.sqrt(dx*dx+dy*dy);}
+  function hideHint(){if(ht){ht.style.opacity='0';setTimeout(function(){ht&&(ht.style.display='none');},500);}}
   setTimeout(hideHint,3000);
 
-  b.addEventListener('touchstart',function(e){
+  bx.addEventListener('touchstart',function(e){
     hideHint();
-    if(e.touches.length===2){pinching=true;dragging=false;startDist=dist(e.touches);startScale=scale;e.preventDefault();}
-    else if(e.touches.length===1){dragging=true;pinching=false;startX=e.touches[0].clientX-panX;startY=e.touches[0].clientY-panY;e.preventDefault();}
+    if(e.touches.length===2){pinch=true;drag=false;sd=dist(e.touches);ss=sc;e.preventDefault();}
+    else if(e.touches.length===1){drag=true;pinch=false;sx=e.touches[0].clientX-px;sy=e.touches[0].clientY-py;e.preventDefault();}
   },{passive:false});
-
-  b.addEventListener('touchmove',function(e){
-    if(pinching&&e.touches.length===2){apply(startScale*(dist(e.touches)/startDist),panX,panY,false);e.preventDefault();}
-    else if(dragging&&e.touches.length===1){apply(scale,e.touches[0].clientX-startX,e.touches[0].clientY-startY,false);e.preventDefault();}
+  bx.addEventListener('touchmove',function(e){
+    if(pinch&&e.touches.length===2){apply(ss*(dist(e.touches)/sd),px,py,false);e.preventDefault();}
+    else if(drag&&e.touches.length===1){apply(sc,e.touches[0].clientX-sx,e.touches[0].clientY-sy,false);e.preventDefault();}
   },{passive:false});
-
-  b.addEventListener('touchend',function(e){
-    if(e.touches.length<2)pinching=false;
-    if(e.touches.length===0)dragging=false;
-  });
-
-  b.addEventListener('mousedown',function(e){
-    if(scale<=1)return;dragging=true;
-    startX=e.clientX-panX;startY=e.clientY-panY;
-    b.style.cursor='grabbing';e.preventDefault();
-  });
-  document.addEventListener('mousemove',function(e){if(!dragging)return;apply(scale,e.clientX-startX,e.clientY-startY,false);});
-  document.addEventListener('mouseup',function(){dragging=false;var b=bx();if(b)b.style.cursor='zoom-in';});
-  b.addEventListener('wheel',function(e){e.preventDefault();apply(scale+(e.deltaY<0?0.25:-0.25),panX,panY,true);},{passive:false});
+  bx.addEventListener('touchend',function(e){
+    if(e.touches.length<2)pinch=false;
+    if(e.touches.length===0){drag=false;
+      var now=Date.now();
+      if(now-lastTap<280&&e.changedTouches.length===1){apply(sc>1?1:2.5,0,0,true);e.preventDefault();}
+      lastTap=now;
+    }
+  },{passive:false});
+  bx.addEventListener('mousedown',function(e){if(sc<=1)return;drag=true;sx=e.clientX-px;sy=e.clientY-py;bx.style.cursor='grabbing';e.preventDefault();});
+  document.addEventListener('mousemove',function(e){if(!drag)return;apply(sc,e.clientX-sx,e.clientY-sy,false);});
+  document.addEventListener('mouseup',function(){if(!drag)return;drag=false;bx.style.cursor='zoom-in';});
+  bx.addEventListener('wheel',function(e){e.preventDefault();apply(sc+(e.deltaY<0?.3:-.3),px,py,true);},{passive:false});
+  bx.addEventListener('dblclick',function(e){apply(sc>1?1:2.5,0,0,true);e.preventDefault();});
 }
 
-// Init DL and Aadhaar zoom
 if(document.readyState==='loading'){
   document.addEventListener('DOMContentLoaded',function(){
-    makeZoomPan('dl-img','dlv','dl-hint','dl-zoom-label');
-    makeZoomPan('ad-img','adv','ad-hint','ad-zoom-label');
+    ZP('irc','rcv','rch','rcz');
+    ZP('idl','dlv','dlh','dlz');
+    ZP('iad','adv','adh','adz');
   });
-} else {
-  makeZoomPan('dl-img','dlv','dl-hint','dl-zoom-label');
-  makeZoomPan('ad-img','adv','ad-hint','ad-zoom-label');
+}else{
+  ZP('irc','rcv','rch','rcz');
+  ZP('idl','dlv','dlh','dlz');
+  ZP('iad','adv','adh','adz');
 }
-
 </script>
 </body>
 </html>
