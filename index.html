@@ -19,14 +19,18 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
 @media(min-width:1024px){.card{margin:24px auto}}
 .navbar{background:linear-gradient(135deg,#003f7d,#0066cc);padding:11px 12px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:10px;position:-webkit-sticky;position:sticky;top:0;z-index:100;cursor:pointer;-webkit-tap-highlight-color:rgba(255,255,255,.1)}
 .navbar:active{opacity:.92}
-.nav-photo{width:42px;height:42px;border-radius:50%;border:2px solid rgba(255,255,255,.65);object-fit:cover;-webkit-flex-shrink:0;flex-shrink:0;background:#1a5fa0}
+.nav-photo-wrap{position:relative;width:42px;height:42px;min-width:42px;border-radius:50%;border:2px solid rgba(255,255,255,.65);-webkit-flex-shrink:0;flex-shrink:0;background:#1a5fa0;overflow:hidden;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
+.nav-photo{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s}
+.nav-photo.loaded{opacity:1}
+.nav-photo-fallback{display:none;width:22px;height:22px}
+.nav-photo.failed+.nav-photo-fallback{display:block}
 .nav-info{-webkit-flex:1;flex:1;min-width:0}
 .nav-name{font-size:14px;font-weight:600;color:#fff;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .nav-role{font-size:10px;color:rgba(255,255,255,.7);font-weight:400}
-.nav-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:3px 9px;font-size:11px;font-weight:700;color:#fff;letter-spacing:.5px;white-space:nowrap;-webkit-flex-shrink:0;flex-shrink:0}
+
 .reg-banner{background:linear-gradient(90deg,#002d5c,#0055b3);padding:8px 12px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:space-between;justify-content:space-between}
 .reg-label{font-size:9px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:1px}
-.reg-number{font-size:17px;font-weight:700;color:#fff;letter-spacing:2px}
+
 .reg-right{text-align:right}
 .reg-model{font-size:10px;color:rgba(255,255,255,.7)}
 .reg-car{font-size:12px;font-weight:600;color:#7ec8ff}
@@ -63,9 +67,21 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
 .doc-inner{display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;gap:7px;padding:0 8px 8px}
 .doc-card{border-radius:10px;overflow:hidden;border:1px solid #dce8f5}
 .doc-lbl{padding:7px 10px;font-size:10px;font-weight:700;color:#004B88;background:#e8f2fc;text-transform:uppercase;letter-spacing:.4px}
-.iv{position:relative;background:#edf3fa;overflow:hidden;touch-action:none;cursor:zoom-in;-webkit-user-select:none;user-select:none;width:100%;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;min-height:100px}
+.iv{position:relative;background:#edf3fa;overflow:hidden;touch-action:none;cursor:zoom-in;-webkit-user-select:none;user-select:none;width:100%;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;min-height:120px}
 .iv img{width:100%;height:auto;display:block;-webkit-transform-origin:center center;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none;max-width:100%;opacity:0;transition:opacity .3s}
 .iv img.loaded{opacity:1}
+.iv .img-loader{position:absolute;top:0;left:0;width:100%;height:100%;display:-webkit-flex;display:flex;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center;gap:6px;z-index:4;pointer-events:none}
+.iv .img-loader .spin{width:32px;height:32px;border:3px solid rgba(0,75,136,.15);border-top:3px solid #004B88;border-radius:50%;-webkit-animation:spin .8s linear infinite;animation:spin .8s linear infinite}
+.iv .img-loader .load-txt{font-size:10px;color:#004B88;font-weight:600;letter-spacing:.3px}
+.iv .img-err{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);transform:translate(-50%,-50%);display:none;-webkit-flex-direction:column;flex-direction:column;-webkit-align-items:center;align-items:center;gap:5px;text-align:center;padding:10px;width:100%}
+.iv .img-err svg{width:32px;height:32px;opacity:.5}
+.iv .img-err span{font-size:11px;color:#c0392b;font-weight:600}
+@-webkit-keyframes spin{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+@keyframes spin{to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+.nav-loading{position:absolute;top:0;left:0;width:100%;height:100%;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;-webkit-justify-content:center;justify-content:center}
+.nav-spin{width:18px;height:18px;border:2px solid rgba(255,255,255,.25);border-top:2px solid rgba(255,255,255,.9);border-radius:50%;-webkit-animation:spin .8s linear infinite;animation:spin .8s linear infinite}
+.pdf-loading{display:-webkit-inline-flex;display:inline-flex;-webkit-align-items:center;align-items:center;gap:6px}
+.pdf-spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top:2px solid #fff;border-radius:50%;-webkit-animation:spin .8s linear infinite;animation:spin .8s linear infinite;-webkit-flex-shrink:0;flex-shrink:0}
 .iv .hint{position:absolute;bottom:8px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%);background:rgba(0,75,136,.8);color:#fff;font-size:10px;padding:3px 10px;border-radius:20px;pointer-events:none;white-space:nowrap;transition:opacity .5s;z-index:5}
 .iv .zlbl{position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;z-index:5}
 .iv .err{width:100%;padding:14px;text-align:center;font-size:11px;color:#c0392b;background:#fff3f3}
@@ -76,8 +92,14 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
 @media(min-width:600px){.nav-name{font-size:15px}.val{font-size:15px}}
 @media(min-width:768px){.body{padding:10px}.row{padding:10px 13px}.btn{font-size:14px;padding:12px 14px}}
 @media(max-width:320px){.nav-name{font-size:12px}.nav-badge{font-size:10px;padding:2px 7px}.val{font-size:13px}.btn{font-size:12px;padding:9px 10px}}
-@media(orientation:landscape) and (max-height:500px){.navbar{padding:8px 12px}.nav-photo{width:36px;height:36px}.nav-name{font-size:13px}.reg-banner{padding:6px 12px}.reg-number{font-size:15px}.contact-strip{padding:5px 12px}.body{padding:6px 8px;gap:6px}.row{padding:8px 10px;gap:8px}.icon-box{width:34px;height:34px}.btns{-webkit-flex-direction:row;flex-direction:row}.btn{padding:9px 10px;font-size:12px}.footer{padding:8px}.footer-text{font-size:12px}}
+@media(orientation:landscape) and (max-height:500px){.navbar{padding:8px 12px}.nav-photo-wrap{width:36px;height:36px;min-width:36px}.nav-name{font-size:13px}.reg-banner{padding:6px 12px}.reg-number{font-size:15px}.contact-strip{padding:5px 12px}.body{padding:6px 8px;gap:6px}.row{padding:8px 10px;gap:8px}.icon-box{width:34px;height:34px}.btns{-webkit-flex-direction:row;flex-direction:row}.btn{padding:9px 10px;font-size:12px}.footer{padding:8px}.footer-text{font-size:12px}}
 @media(prefers-color-scheme:dark){html,body{background:#0f1923}.card{background:#1a2533}.row{background:#1e2d3d}.val{color:#e8f0fa}.sub{color:#8fa3b8}.doc-section{background:#1e2d3d}.doc-card{border-color:#2a3d52}.doc-lbl{background:#1a3450;color:#7ec8ff}.doc-title{color:#7ec8ff}.lbl{color:#7ec8ff}.iv{background:#1a2a3a}.btn-open{background:#1a3050;color:#7ec8ff}}
+
+
+.reg-plate-wrap{display:-webkit-inline-flex;display:inline-flex;-webkit-align-items:stretch;align-items:stretch;border:2px solid #fff;border-radius:5px;overflow:hidden;margin-top:4px;box-shadow:0 1px 6px rgba(0,0,0,0.25)}
+.reg-plate-ind{background:#003399;color:#fff;font-size:9px;font-weight:800;padding:3px 5px;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;letter-spacing:.5px;font-family:Arial,sans-serif}
+.reg-plate-num{background:#fff;color:#111;font-size:15px;font-weight:800;padding:3px 10px;letter-spacing:2px;font-family:'Courier New',monospace;display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center}
+@media(max-width:360px){.reg-plate-num{font-size:13px;padding:3px 7px;letter-spacing:1.5px}}
 </style>
 </head>
 <body>
@@ -93,37 +115,101 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
   function _x(r){var k='MP07AH8337RAKESH';return r.map(function(c,i){return String.fromCharCode(c^k.charCodeAt(i%k.length));}).join('');}
   var _pid=_x(_a),_rid=_x(_b),_iid=_x(_c),_did=_x(_e),_aid=_x(_f);
 
-  function loadImg(el,id){
-    if(!el) return;
-    var urls=[
+  // Cache key: store which URL index worked last time, reset daily
+  var _dayKey='imgday-'+Math.floor(Date.now()/86400000);
+  var _urlCache={};
+  try{var _saved=JSON.parse(localStorage.getItem('iuc')||'{}');if(_saved.day===_dayKey){_urlCache=_saved.data||{};}}catch(e){}
+  function _saveUrlCache(){try{localStorage.setItem('iuc',JSON.stringify({day:_dayKey,data:_urlCache}));}catch(e){}}
+
+  function _buildUrls(id){
+    return[
       'https://drive.google.com/uc?export=view&id='+id,
       'https://drive.google.com/thumbnail?id='+id+'&sz=w800',
       'https://lh3.googleusercontent.com/d/'+id+'=w800'
     ];
-    var i=0;
-    function tryNext(){
+  }
+
+  // Navbar photo loader — shows spinner while loading, SVG icon ONLY on complete failure
+  function loadNavPhoto(el,id){
+    if(!el) return;
+    var urls=_buildUrls(id);
+    var startIdx=(_urlCache[id]!==undefined)?_urlCache[id]:0;
+    var i=startIdx;
+    var loaderEl=document.getElementById('ph-load');
+    var svgEl=el.nextElementSibling; // .nav-photo-fallback svg
+    el.onerror=function(){i++;tryNav();};
+    el.onload=function(){
+      el.classList.add('loaded');
+      if(loaderEl)loaderEl.style.display='none';
+      _urlCache[id]=i;_saveUrlCache();
+    };
+    function tryNav(){
       if(i>=urls.length){
-        var d=document.createElement('div');
-        d.className='err';d.textContent='⚠️ Image unavailable. Check Drive sharing.';
-        el.parentNode&&el.parentNode.insertBefore(d,el);
-        el.style.display='none';return;
+        if(startIdx>0){startIdx=0;i=0;tryNav();return;}
+        // All URLs failed — hide spinner, show SVG person icon
+        if(loaderEl)loaderEl.style.display='none';
+        el.style.display='none';
+        if(svgEl&&svgEl.tagName==='svg')svgEl.style.display='block';
+        return;
       }
-      el.src=urls[i++];
+      el.style.display=''; // keep img visible while trying
+      el.src=urls[i];
     }
-    el.onerror=tryNext;
-    el.onload=function(){el.classList.add('loaded');};
-    tryNext();
+    tryNav();
+  }
+
+  // Document image loader — shows spinner while loading, error box on failure
+  function loadImg(el,id){
+    if(!el) return;
+    var urls=_buildUrls(id);
+    var startIdx=(_urlCache[id]!==undefined)?_urlCache[id]:0;
+    var i=startIdx;
+    var par=el.parentNode;
+    var loaderEl=par?par.querySelector('.img-loader'):null;
+    var errEl=par?par.querySelector('.img-err'):null;
+    el.onerror=function(){i++;tryDoc();};
+    el.onload=function(){
+      el.classList.add('loaded');
+      if(loaderEl)loaderEl.style.display='none';
+      _urlCache[id]=i;_saveUrlCache();
+    };
+    function tryDoc(){
+      if(i>=urls.length){
+        if(startIdx>0){startIdx=0;i=0;tryDoc();return;}
+        if(loaderEl)loaderEl.style.display='none';
+        if(errEl){errEl.style.display='-webkit-flex';errEl.style.display='flex';}
+        return;
+      }
+      el.src=urls[i];
+    }
+    tryDoc();
   }
 
   function setUrls(){
-    loadImg(document.getElementById('ph'),_pid);
+    loadNavPhoto(document.getElementById('ph'),_pid);
     loadImg(document.getElementById('irc'),_rid);
     loadImg(document.getElementById('idl'),_did);
     loadImg(document.getElementById('iad'),_aid);
-    var a=document.getElementById('ins-dl');
-    if(a){a.href='https://drive.google.com/uc?export=download&id='+_iid;}
-    var b=document.getElementById('ins-op');
-    if(b){b.href='https://drive.google.com/file/d/'+_iid+'/preview';}
+    var dlBtn=document.getElementById('ins-dl');
+    var opBtn=document.getElementById('ins-op');
+    if(dlBtn){
+      dlBtn.href='https://drive.google.com/uc?export=download&id='+_iid;
+      dlBtn.addEventListener('click',function(){
+        var orig=dlBtn.innerHTML;
+        dlBtn.innerHTML='<span class="pdf-loading"><span class="pdf-spin"></span>Downloading...</span>';
+        dlBtn.style.pointerEvents='none';
+        setTimeout(function(){dlBtn.innerHTML=orig;dlBtn.style.pointerEvents='';},8000);
+      });
+    }
+    if(opBtn){
+      opBtn.href='https://drive.google.com/file/d/'+_iid+'/preview';
+      opBtn.addEventListener('click',function(){
+        var orig=opBtn.innerHTML;
+        opBtn.innerHTML='<span class="pdf-loading"><span class="pdf-spin" style="border-top-color:#1a56db"></span>Opening...</span>';
+        opBtn.style.pointerEvents='none';
+        setTimeout(function(){opBtn.innerHTML=orig;opBtn.style.pointerEvents='';},5000);
+      });
+    }
   }
 
   document.addEventListener('contextmenu',function(e){e.preventDefault();return false;});
@@ -154,18 +240,67 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
 
 <div class="card">
   <div class="navbar" onclick="window.open('https://akashguptadeveloper.github.io/MyCarDetails/index.html','_blank')" role="button">
-    <img class="nav-photo" id="ph" src="" alt="Owner" width="42" height="42">
+    <div class="nav-photo-wrap"><div class="nav-loading" id="ph-load"><div class="nav-spin"></div></div><img class="nav-photo" id="ph" src="" alt="Owner" width="42" height="42" onerror="this.classList.add('failed');this.style.display='none';this.nextElementSibling.style.display='block'"><svg class="nav-photo-fallback" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="rgba(255,255,255,.8)" stroke-width="1.8"/><path d="M4 20c0-3 3.6-5 8-5s8 2 8 5" stroke="rgba(255,255,255,.8)" stroke-width="1.8" stroke-linecap="round"/></svg></div>
     <div class="nav-info">
       <div class="nav-name">Mr. Rakesh Gupta</div>
       <div class="nav-role">Vehicle Owner Details</div>
     </div>
-    <div class="nav-badge">MP07AH8337</div>
+    <svg viewBox="0 0 120 48" width="90" height="36" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))">
+  <!-- Body -->
+  <path d="M8 34 L8 26 Q10 16 22 13 L38 10 Q52 7 62 8 L82 9 Q96 10 104 18 L112 26 L112 34 Z" fill="url(#vbody)" stroke="rgba(255,255,255,0.6)" stroke-width="0.8"/>
+  <!-- Roof -->
+  <path d="M30 13 Q36 5 50 4 L76 4 Q88 4 94 13 Z" fill="url(#vroof)" stroke="rgba(255,255,255,0.5)" stroke-width="0.8"/>
+  <!-- Windshield -->
+  <path d="M32 13 Q38 6 50 5 L68 5 Q76 5 80 13 Z" fill="rgba(150,210,255,0.35)" stroke="rgba(255,255,255,0.3)" stroke-width="0.4"/>
+  <!-- Rear window -->
+  <path d="M82 13 Q88 6 93 13 Z" fill="rgba(150,210,255,0.3)" stroke="rgba(255,255,255,0.2)" stroke-width="0.4"/>
+  <!-- Side window -->
+  <path d="M50 5 L80 5 L80 13 L32 13 Z" fill="rgba(150,210,255,0.2)"/>
+  <!-- Door line -->
+  <line x1="62" y1="13" x2="62" y2="32" stroke="rgba(255,255,255,0.15)" stroke-width="0.6"/>
+  <!-- Front bumper -->
+  <path d="M8 26 L8 34 Q8 36 11 36 L20 36" stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none"/>
+  <!-- Rear bumper -->
+  <path d="M112 26 L112 34 Q112 36 109 36 L100 36" stroke="rgba(255,255,255,0.4)" stroke-width="1" fill="none"/>
+  <!-- Front headlight -->
+  <path d="M8 22 L16 20 L18 24 L8 25 Z" fill="rgba(255,240,150,0.7)" stroke="rgba(255,255,255,0.4)" stroke-width="0.4"/>
+  <!-- Rear light -->
+  <path d="M112 22 L104 21 L103 25 L112 25 Z" fill="rgba(255,80,80,0.7)" stroke="rgba(255,255,255,0.3)" stroke-width="0.4"/>
+  <!-- Front wheel -->
+  <circle cx="30" cy="36" r="8" fill="#1a2a3a" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <circle cx="30" cy="36" r="5" fill="#2a3a4a" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+  <circle cx="30" cy="36" r="2" fill="rgba(255,255,255,0.5)"/>
+  <!-- Rear wheel -->
+  <circle cx="92" cy="36" r="8" fill="#1a2a3a" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+  <circle cx="92" cy="36" r="5" fill="#2a3a4a" stroke="rgba(255,255,255,0.3)" stroke-width="0.8"/>
+  <circle cx="92" cy="36" r="2" fill="rgba(255,255,255,0.5)"/>
+  <!-- Ground shadow -->
+  <ellipse cx="61" cy="45" rx="50" ry="2.5" fill="rgba(0,0,0,0.25)"/>
+  <!-- Body shine -->
+  <path d="M20 18 Q50 14 90 16" stroke="rgba(255,255,255,0.7)" stroke-width="2" stroke-linecap="round"/>
+  <!-- Grille -->
+  <rect x="8" y="27" width="6" height="4" rx="1" fill="rgba(0,0,0,0.3)" stroke="rgba(255,255,255,0.2)" stroke-width="0.4"/>
+  <defs>
+    <linearGradient id="vbody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.92)"/>
+      <stop offset="60%" stop-color="rgba(220,235,255,0.75)"/>
+      <stop offset="100%" stop-color="rgba(180,210,255,0.5)"/>
+    </linearGradient>
+    <linearGradient id="vroof" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.88)"/>
+      <stop offset="100%" stop-color="rgba(210,228,255,0.7)"/>
+    </linearGradient>
+  </defs>
+</svg>
   </div>
 
   <div class="reg-banner">
     <div>
       <div class="reg-label">Registration No.</div>
-      <div class="reg-number">MP07 AH 8337</div>
+      <div class="reg-plate-wrap">
+        <div class="reg-plate-ind">IN</div>
+        <div class="reg-plate-num">MP07 AH 8337</div>
+      </div>
     </div>
     <div class="reg-right">
       <div class="reg-model">Hyundai New Venue</div>
@@ -186,7 +321,7 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
       <div>
         <div class="lbl">Owner Name</div>
         <div class="val">Mr. Rakesh Gupta</div>
-        <div class="sub">(Akash Gupta)</div>
+        <div class="sub" style="font-size:12px;font-weight:700;background:linear-gradient(90deg,#003f7d,#0077e6,#00b4d8,#0077e6,#003f7d);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 3s linear infinite;margin-top:2px">(Akash Gupta)</div>
       </div>
     </div>
 
@@ -197,14 +332,14 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
         </div>
         <div class="lbl lbl-call">Direct Call</div>
       </div>
-      <div class="btns">
-        <a href="tel:+917987574875" class="btn btn-blue">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4l1.9-1.9c.2-.2.6-.3.9-.1 1 .4 2.1.6 3.2.6.5 0 .8.3.8.8v2.4c0 .5-.3.8-.8.8C9.9 19 5 14.1 5 5.8c0-.5.3-.8.8-.8h2.4c.5 0 .8.3.8.8 0 1.1.2 2.2.6 3.2.2.3.1.7-.1.9L7.6 11.8l-1-1z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          +91 79875 74875
+      <div style="display:flex;flex-direction:row;gap:8px;align-items:center;flex-wrap:wrap">
+        <a href="tel:+917987574875" class="btn btn-blue" style="width:auto;padding:9px 16px 9px 10px;border-radius:50px;gap:10px">
+          <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4l1.9-1.9c.2-.2.6-.3.9-.1 1 .4 2.1.6 3.2.6.5 0 .8.3.8.8v2.4c0 .5-.3.8-.8.8C9.9 19 5 14.1 5 5.8c0-.5.3-.8.8-.8h2.4c.5 0 .8.3.8.8 0 1.1.2 2.2.6 3.2.2.3.1.7-.1.9L7.6 11.8l-1-1z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span style="font-size:14px;font-weight:600;letter-spacing:0.3px">+91 79875 74875</span>
         </a>
-        <a href="tel:+919926294260" class="btn btn-blue">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4l1.9-1.9c.2-.2.6-.3.9-.1 1 .4 2.1.6 3.2.6.5 0 .8.3.8.8v2.4c0 .5-.3.8-.8.8C9.9 19 5 14.1 5 5.8c0-.5.3-.8.8-.8h2.4c.5 0 .8.3.8.8 0 1.1.2 2.2.6 3.2.2.3.1.7-.1.9L7.6 11.8l-1-1z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          +91 99262 94260
+        <a href="tel:+919926294260" class="btn btn-blue" style="width:auto;padding:9px 16px 9px 10px;border-radius:50px;gap:10px">
+          <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8C7.8 13.2 9.8 15.2 12.2 16.4l1.9-1.9c.2-.2.6-.3.9-.1 1 .4 2.1.6 3.2.6.5 0 .8.3.8.8v2.4c0 .5-.3.8-.8.8C9.9 19 5 14.1 5 5.8c0-.5.3-.8.8-.8h2.4c.5 0 .8.3.8.8 0 1.1.2 2.2.6 3.2.2.3.1.7-.1.9L7.6 11.8l-1-1z" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span style="font-size:14px;font-weight:600;letter-spacing:0.3px">+91 99262 94260</span>
         </a>
       </div>
     </div>
@@ -216,10 +351,14 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
         </div>
         <div class="lbl lbl-green">WhatsApp</div>
       </div>
-      <div>
-        <a href="https://wa.me/917987574875" target="_blank" rel="noopener noreferrer" class="btn btn-wa">
-          <svg viewBox="0 0 24 24" fill="white"><path d="M12.031 2C6.49 2 2 6.49 2 12.031c0 1.868.511 3.614 1.395 5.117L2 22l5.02-1.369A10.01 10.01 0 0 0 12.031 22C17.573 22 22 17.51 22 11.969 22 6.428 17.573 2 12.031 2zm5.27 14.19c-.225.633-1.317 1.21-1.81 1.267-.492.056-1.004.079-3.23-.673-2.718-.927-4.459-3.693-4.594-3.865-.133-.172-1.085-1.443-1.085-2.753 0-1.31.685-1.954.93-2.22.245-.264.535-.33.713-.33h.514c.165 0 .39-.063.608.463.225.541.763 1.864.83 2 .067.133.112.29.022.463-.09.172-.135.279-.267.43-.134.152-.28.339-.4.456-.133.133-.272.278-.117.545.155.267.69 1.138 1.482 1.843.99.882 1.826 1.154 2.083 1.283.257.127.408.106.558-.064.155-.172.664-.775.843-1.042.178-.267.356-.222.597-.133.24.089 1.525.72 1.787.85.26.133.432.2.496.31.066.112.066.644-.158 1.27z"/></svg>
-          Message on WhatsApp
+      <div style="display:flex;flex-direction:row;gap:8px;align-items:center;flex-wrap:wrap">
+        <a href="https://wa.me/917987574875" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="width:auto;padding:9px 16px 9px 10px;border-radius:50px;gap:10px">
+          <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="white"><path d="M12.031 2C6.49 2 2 6.49 2 12.031c0 1.868.511 3.614 1.395 5.117L2 22l5.02-1.369A10.01 10.01 0 0 0 12.031 22C17.573 22 22 17.51 22 11.969 22 6.428 17.573 2 12.031 2zm5.27 14.19c-.225.633-1.317 1.21-1.81 1.267-.492.056-1.004.079-3.23-.673-2.718-.927-4.459-3.693-4.594-3.865-.133-.172-1.085-1.443-1.085-2.753 0-1.31.685-1.954.93-2.22.245-.264.535-.33.713-.33h.514c.165 0 .39-.063.608.463.225.541.763 1.864.83 2 .067.133.112.29.022.463-.09.172-.135.279-.267.43-.134.152-.28.339-.4.456-.133.133-.272.278-.117.545.155.267.69 1.138 1.482 1.843.99.882 1.826 1.154 2.083 1.283.257.127.408.106.558-.064.155-.172.664-.775.843-1.042.178-.267.356-.222.597-.133.24.089 1.525.72 1.787.85.26.133.432.2.496.31.066.112.066.644-.158 1.27z"/></svg></span>
+          <span style="font-size:14px;font-weight:600;letter-spacing:0.3px">+91 79875 74875</span>
+        </a>
+        <a href="https://wa.me/919926294260" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="width:auto;padding:9px 16px 9px 10px;border-radius:50px;gap:10px">
+          <span style="width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="white"><path d="M12.031 2C6.49 2 2 6.49 2 12.031c0 1.868.511 3.614 1.395 5.117L2 22l5.02-1.369A10.01 10.01 0 0 0 12.031 22C17.573 22 22 17.51 22 11.969 22 6.428 17.573 2 12.031 2zm5.27 14.19c-.225.633-1.317 1.21-1.81 1.267-.492.056-1.004.079-3.23-.673-2.718-.927-4.459-3.693-4.594-3.865-.133-.172-1.085-1.443-1.085-2.753 0-1.31.685-1.954.93-2.22.245-.264.535-.33.713-.33h.514c.165 0 .39-.063.608.463.225.541.763 1.864.83 2 .067.133.112.29.022.463-.09.172-.135.279-.267.43-.134.152-.28.339-.4.456-.133.133-.272.278-.117.545.155.267.69 1.138 1.482 1.843.99.882 1.826 1.154 2.083 1.283.257.127.408.106.558-.064.155-.172.664-.775.843-1.042.178-.267.356-.222.597-.133.24.089 1.525.72 1.787.85.26.133.432.2.496.31.066.112.066.644-.158 1.27z"/></svg></span>
+          <span style="font-size:14px;font-weight:600;letter-spacing:0.3px">+91 99262 94260</span>
         </a>
       </div>
     </div>
@@ -238,6 +377,7 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
           <div class="doc-card">
             <div class="doc-lbl">🚗 Car RC — Registration Certificate</div>
             <div class="iv" id="rcv">
+              <div class="img-loader"><div class="spin"></div><div class="load-txt">Loading...</div></div><div class="img-err"><svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Image unavailable</span></div>
               <img id="irc" src="" alt="Car RC" style="width:100%;height:auto;display:block;-webkit-transform-origin:center;transform-origin:center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
               <div class="hint" id="rch">🔍 Pinch to zoom • Double tap to zoom</div>
               <div class="zlbl" id="rcz">1×</div>
@@ -261,6 +401,7 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
           <div class="doc-card">
             <div class="doc-lbl">🪪 Driving Licence</div>
             <div class="iv" id="dlv">
+              <div class="img-loader"><div class="spin"></div><div class="load-txt">Loading...</div></div><div class="img-err"><svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Image unavailable</span></div>
               <img id="idl" src="" alt="Driving Licence" style="width:100%;height:auto;display:block;-webkit-transform-origin:center;transform-origin:center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
               <div class="hint" id="dlh">🔍 Pinch to zoom • Double tap to zoom</div>
               <div class="zlbl" id="dlz">1×</div>
@@ -270,6 +411,7 @@ body{font-family:'Outfit',sans-serif;display:-webkit-flex;display:flex;-webkit-j
           <div class="doc-card">
             <div class="doc-lbl">🪪 Aadhaar Card</div>
             <div class="iv" id="adv">
+              <div class="img-loader"><div class="spin"></div><div class="load-txt">Loading...</div></div><div class="img-err"><svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#c0392b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Image unavailable</span></div>
               <img id="iad" src="" alt="Aadhaar Card" style="width:100%;height:auto;display:block;-webkit-transform-origin:center;transform-origin:center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
               <div class="hint" id="adh">🔍 Pinch to zoom • Double tap to zoom</div>
               <div class="zlbl" id="adz">1×</div>
