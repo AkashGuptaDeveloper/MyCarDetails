@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,15 +115,107 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
 </style>
 </head>
 <body>
+
+<script>
+(function(){
+  // --- OBFUSCATED IDs ---
+  var PHOTO_ID=[124, 98, 113, 15, 21, 123, 81, 121, 114, 83, 10, 14, 126, 15, 62, 15, 53, 1, 121, 90, 38, 58, 127, 73, 10, 69, 0, 59, 40, 48, 2, 44, 6];
+  var RC_ID=[124, 37, 114, 7, 24, 12, 85, 3, 70, 66, 107, 35, 19, 16, 3, 50, 11, 98, 3, 115, 36, 3, 83, 118, 6, 121, 33, 49, 13, 61, 7, 101, 116];
+  var INS_ID=[124, 99, 90, 95, 38, 16, 86, 102, 98, 96, 55, 5, 20, 49, 23, 11, 7, 61, 118, 123, 6, 29, 21, 11, 10, 95, 100, 34, 56, 104, 12, 124, 31];
+  var DL_ID=[124, 53, 121, 118, 22, 31, 119, 0, 84, 80, 57, 116, 62, 46, 126, 31, 24, 2, 91, 127, 116, 56, 106, 97, 101, 0, 127, 17, 122, 16, 3, 46, 61];
+  var AADHAR_ID=[124, 6, 73, 124, 7, 58, 110, 4, 127, 123, 103, 118, 51, 38, 18, 34, 30, 37, 115, 14, 53, 27, 127, 96, 96, 125, 35, 112, 125, 31, 18, 45, 5];
+  function _d(arr){var k='MP07AH8337RAKESH';return arr.map(function(c,i){return String.fromCharCode(c^k.charCodeAt(i%k.length));}).join('');}
+  var __photo_id = _d(PHOTO_ID);
+  var __rc_id = _d(RC_ID);
+  var __ins_id = _d(INS_ID);
+  var __dl_id = _d(DL_ID);
+  var __aadhar_id = _d(AADHAR_ID);
+
+  // --- SET URLs AT RUNTIME ---
+  function setUrls(){
+    var ph=document.getElementById('nav-photo-img');
+    if(ph) ph.src='https://drive.google.com/thumbnail?id='+__photo_id+'&sz=w200';
+
+    var rc=document.getElementById('rc-img');
+    if(rc) rc.src='https://drive.google.com/thumbnail?id='+__rc_id+'&sz=w800';
+
+    var dl=document.getElementById('dl-img');
+    if(dl) dl.src='https://drive.google.com/thumbnail?id='+__dl_id+'&sz=w800';
+
+    var ad=document.getElementById('ad-img');
+    if(ad) ad.src='https://drive.google.com/thumbnail?id='+__aadhar_id+'&sz=w800';
+
+    var insBtn=document.getElementById('ins-dl-btn');
+    if(insBtn){
+      insBtn.href='https://drive.google.com/uc?export=download&id='+__ins_id;
+      insBtn.setAttribute('download','Car_Insurance_MP07AH8337.pdf');
+    }
+    var insOpen=document.getElementById('ins-open-btn');
+    if(insOpen) insOpen.href='https://drive.google.com/file/d/'+__ins_id+'/preview';
+  }
+
+  // --- RIGHT CLICK DISABLE ---
+  document.addEventListener('contextmenu', function(e){ e.preventDefault(); return false; });
+
+  // --- KEYBOARD SHORTCUTS DISABLE ---
+  // F12, Ctrl+Shift+I, Ctrl+U (view source), Ctrl+S (save), Ctrl+Shift+J, Ctrl+Shift+C
+  document.addEventListener('keydown', function(e){
+    if(e.keyCode===123) { e.preventDefault(); return false; } // F12
+    if(e.ctrlKey && e.shiftKey && (e.keyCode===73||e.keyCode===74||e.keyCode===67)) { e.preventDefault(); return false; } // Ctrl+Shift+I/J/C
+    if(e.ctrlKey && e.keyCode===85) { e.preventDefault(); return false; } // Ctrl+U
+    if(e.ctrlKey && e.keyCode===83) { e.preventDefault(); return false; } // Ctrl+S
+    if(e.ctrlKey && e.keyCode===80) { e.preventDefault(); return false; } // Ctrl+P
+    if(e.metaKey && e.keyCode===83) { e.preventDefault(); return false; } // Cmd+S
+    if(e.metaKey && e.keyCode===80) { e.preventDefault(); return false; } // Cmd+P
+  });
+
+  // --- DEVTOOLS DETECTION --- (basic deterrent)
+  var _dt = false;
+  var _threshold = 160;
+  setInterval(function(){
+    if(window.outerWidth - window.innerWidth > _threshold || window.outerHeight - window.innerHeight > _threshold){
+      if(!_dt){
+        _dt = true;
+        document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;background:#fff;color:#c0392b;font-size:18px;font-weight:700;text-align:center;padding:20px;">⛔ Access Restricted<br><span style="font-size:13px;color:#666;font-weight:400;margin-top:8px;display:block">Developer tools detected.</span></div>';
+      }
+    } else {
+      _dt = false;
+    }
+  }, 1000);
+
+  // --- IMG DRAG DISABLE ---
+  document.addEventListener('dragstart', function(e){
+    if(e.target.tagName==='IMG') e.preventDefault();
+  });
+
+  // --- LONG PRESS DISABLE (mobile save image) ---
+  document.addEventListener('touchstart', function(e){
+    if(e.target.tagName==='IMG') e.preventDefault();
+  }, {passive:false});
+
+  // --- CSS: disable text select + print ---
+  var style=document.createElement('style');
+  style.textContent=[
+    '* { -webkit-user-select:none!important; user-select:none!important; }',
+    '@media print { body { display:none!important; } }',
+  ].join('');
+  document.head.appendChild(style);
+
+  // --- INIT ---
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', setUrls);
+  } else {
+    setUrls();
+  }
+
+})();
+</script>
+
 <div class="card">
 
   <!-- NAVBAR -->
-  <div class="navbar">
-    <input type="file" id="nav-photo-input" accept="image/*" style="display:none" onchange="loadNavPhoto(this)">
-    <label for="nav-photo-input" style="display:inline-flex;cursor:pointer;flex-shrink:0;position:relative" title="Tap to change photo">
-      <img class="nav-photo" id="nav-photo-img" src="https://drive.google.com/thumbnail?id=12A8T3iJAdXO5JmGxQImgrGz9rRzcuQdK&sz=w200" alt="Owner" style="pointer-events:none">
-      <span style="position:absolute;bottom:0;right:0;background:#fff;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:8px;box-shadow:0 1px 3px rgba(0,0,0,.3)">✏️</span>
-    </label>
+  <div class="navbar" onclick="window.open('https://akashguptadeveloper.github.io/MyCarDetails/index.html','_blank')" style="cursor:pointer">
+    <img class="nav-photo" id="nav-photo-img" src="" alt="Owner">
     <div class="nav-info">
       <div class="nav-name">Mr. Rakesh Gupta</div>
       <div class="nav-role">Vehicle Owner Details</div>
@@ -246,7 +337,7 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
             <div class="rc-viewer" id="rcv">
               <input type="file" id="rc-img-input" accept="image/*" style="display:none" onchange="loadRcImg(this)">
               <label for="rc-img-input" style="width:100%;display:block;cursor:pointer">
-                <img id="rc-img" src="https://drive.google.com/thumbnail?id=1uB0YDm0uu9bXUPzF23DeKkE5NspFxT-9&sz=w800" alt="Car RC" style="width:100%;height:auto;display:block;pointer-events:none">
+                <img id="rc-img" src="" alt="Car RC" style="width:100%;height:auto;display:block;pointer-events:none">
               </label>
               <div class="rc-hint" id="rc-hint">🔍 Pinch to zoom in • Drag to pan</div>
               <div id="rc-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
@@ -257,11 +348,11 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
           <div class="doc-card">
             <div class="doc-lbl">🛡️ Car Insurance — ICICI Lombard</div>
             <div style="padding:10px;display:flex;flex-direction:column;gap:7px">
-              <a href="https://drive.google.com/uc?export=download&id=13jhgXnUQWeD_tDCJmFLGU-89h6cs-_4R" download="Car_Insurance_MP07AH8337.pdf" class="btn btn-dl">
+              <a id="ins-dl-btn" href="#" download="Car_Insurance_MP07AH8337.pdf" class="btn btn-dl">
                 <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 16l-4-4h2.5V4h3v8H16l-4 4z" fill="white"/><rect x="4" y="18" width="16" height="2" rx="1" fill="white"/></svg>
                 Download Insurance PDF
               </a>
-              <a href="https://drive.google.com/file/d/13jhgXnUQWeD_tDCJmFLGU-89h6cs-_4R/preview" target="_blank" rel="noopener" class="btn btn-open">
+              <a id="ins-open-btn" href="#" target="_blank" rel="noopener" class="btn btn-open">
                 <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9l-6-6z" stroke="#1a56db" stroke-width="1.8"/><polyline points="14,3 14,9 20,9" stroke="#1a56db" stroke-width="1.8"/><line x1="8" y1="13" x2="16" y2="13" stroke="#1a56db" stroke-width="1.5"/><line x1="8" y1="17" x2="13" y2="17" stroke="#1a56db" stroke-width="1.5"/></svg>
                 Open Insurance PDF
               </a>
@@ -273,7 +364,7 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
           <div class="doc-card">
             <div class="doc-lbl">🪪 Driving Licence</div>
             <div class="rc-viewer" id="dlv">
-              <img id="dl-img" src="https://drive.google.com/thumbnail?id=1eIAWWO3ggk5uk-WURkH5pRRV7-P1UPfp&sz=w800" alt="Driving Licence" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
+              <img id="dl-img" src="" alt="Driving Licence" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
               <div class="rc-hint" id="dl-hint">🔍 Pinch to zoom in • Drag to pan</div>
               <div id="dl-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
             </div>
@@ -283,7 +374,7 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
           <div class="doc-card">
             <div class="doc-lbl">🪪 Aadhaar Card</div>
             <div class="rc-viewer" id="adv">
-              <img id="ad-img" src="https://drive.google.com/thumbnail?id=1VyKFrV7LL57xcAjSuC9tSGSSJq16ZAeH&sz=w800" alt="Aadhaar Card" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
+              <img id="ad-img" src="" alt="Aadhaar Card" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
               <div class="rc-hint" id="ad-hint">🔍 Pinch to zoom in • Drag to pan</div>
               <div id="ad-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
             </div>
