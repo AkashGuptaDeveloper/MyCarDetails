@@ -132,18 +132,26 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
   var __aadhar_id = _d(AADHAR_ID);
 
   // --- SET URLs AT RUNTIME ---
+  function gdImg(id){ return 'https://drive.google.com/uc?export=view&id='+id; }
+
+  function setImgWithFallback(el, id){
+    if(!el) return;
+    el.style.minHeight='80px';
+    el.style.background='#edf3fa';
+    var url = gdImg(id);
+    el.src = url;
+    el.onerror = function(){
+      // fallback: try thumbnail format
+      el.onerror = null;
+      el.src = 'https://drive.google.com/thumbnail?id='+id+'&sz=w800';
+    };
+  }
+
   function setUrls(){
-    var ph=document.getElementById('nav-photo-img');
-    if(ph) ph.src='https://drive.google.com/thumbnail?id='+__photo_id+'&sz=w200';
-
-    var rc=document.getElementById('rc-img');
-    if(rc) rc.src='https://drive.google.com/thumbnail?id='+__rc_id+'&sz=w800';
-
-    var dl=document.getElementById('dl-img');
-    if(dl) dl.src='https://drive.google.com/thumbnail?id='+__dl_id+'&sz=w800';
-
-    var ad=document.getElementById('ad-img');
-    if(ad) ad.src='https://drive.google.com/thumbnail?id='+__aadhar_id+'&sz=w800';
+    setImgWithFallback(document.getElementById('nav-photo-img'), __photo_id);
+    setImgWithFallback(document.getElementById('rc-img'), __rc_id);
+    setImgWithFallback(document.getElementById('dl-img'), __dl_id);
+    setImgWithFallback(document.getElementById('ad-img'), __aadhar_id);
 
     var insBtn=document.getElementById('ins-dl-btn');
     if(insBtn){
@@ -335,10 +343,7 @@ body{font-family:'Outfit',sans-serif;display:flex;justify-content:center;align-i
           <div class="doc-card">
             <div class="doc-lbl">🚗 Car RC — Registration Certificate</div>
             <div class="rc-viewer" id="rcv">
-              <input type="file" id="rc-img-input" accept="image/*" style="display:none" onchange="loadRcImg(this)">
-              <label for="rc-img-input" style="width:100%;display:block;cursor:pointer">
-                <img id="rc-img" src="" alt="Car RC" style="width:100%;height:auto;display:block;pointer-events:none">
-              </label>
+              <img id="rc-img" src="" alt="Car RC" style="width:100%;height:auto;display:block;transform-origin:center center;will-change:transform;pointer-events:none;-webkit-user-drag:none">
               <div class="rc-hint" id="rc-hint">🔍 Pinch to zoom in • Drag to pan</div>
               <div id="rc-zoom-label" style="position:absolute;top:8px;right:8px;background:rgba(0,75,136,.75);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;pointer-events:none;display:none;">1×</div>
             </div>
